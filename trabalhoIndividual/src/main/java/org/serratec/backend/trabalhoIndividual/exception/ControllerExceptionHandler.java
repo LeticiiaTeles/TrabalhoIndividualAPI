@@ -37,10 +37,10 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 		
 		List<String> erros= new ArrayList<>();
-		erros.add("Valor de enumeração inválido: " + ex.getMostSpecificCause().getMessage());
+		erros.add("Existem campos inválidos: " + ex.getMostSpecificCause().getMessage());
 		
 		ErroResposta erroResposta = new ErroResposta(status.value(), 
-				"Existem campos invpalidos, confira o preenchimento", LocalDateTime.now(), erros);
+				"Existem campos inválidos, confira o preenchimento", LocalDateTime.now(), erros);
 		
 		return super.handleExceptionInternal(ex, erroResposta, headers, status, request);
 	}
